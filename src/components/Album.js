@@ -1,11 +1,15 @@
 import React from 'react';
+import Header from './Header';
 
 class Album extends React.Component {
   render() {
     return (
-      <div>
-        Album
-      </div>
+      <header>
+        <Header />
+        <section>
+          Album
+        </section>
+      </header>
     );
   }
 }

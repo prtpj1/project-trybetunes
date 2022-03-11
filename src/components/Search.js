@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Header from './Header';
 
-class Search extends React.Component {
+class Search extends Component {
   render() {
     return (
-      <div>
-        Search
-      </div>
+      <header>
+        <Header />
+        <section>
+          Search
+        </section>
+      </header>
     );
   }
 }

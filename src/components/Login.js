@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 // import Loading from './Loading';
 
 import { createUser } from '../services/userAPI';
 
-class Login extends React.Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 

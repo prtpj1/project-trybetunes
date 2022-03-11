@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Header from './Header';
 
-class Profile extends React.Component {
+class Profile extends Component {
   render() {
     return (
-      <div>
-        Profile
-      </div>
+      <header>
+        <Header />
+        <section>
+          Profile
+        </section>
+      </header>
     );
   }
 }

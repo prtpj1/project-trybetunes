@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Header from './Header';
 
-class Favorites extends React.Component {
+class Favorites extends Component {
   render() {
     return (
-      <div>
-        Favorites
-      </div>
+      <header>
+        <Header />
+        <section>
+          Favorites
+        </section>
+      </header>
     );
   }
 }

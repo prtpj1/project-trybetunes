@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-
-// import Loading from './Loading';
-
 import { createUser } from '../services/userAPI';
+
+import Header from './Header';
 
 class Login extends Component {
   constructor(props) {
@@ -52,30 +51,35 @@ render() {
   const { disabled, name, loading, login } = this.state;
 
   return (
-    <main>
+    <div>
       {loading ? <p>Carregando...</p> : (
         <section>
-          <label htmlFor="name">
-            Login:
-            <input
-              data-testid="login-name-input"
-              id="name"
-              name="name"
-              onChange={ this.handleChange }
-              placeholder="Type your name here..."
-              type="text"
-              value={ name }
-            />
-          </label>
-          <button
-            data-testid="login-submit-button"
-            disabled={ disabled }
-            name="btnName"
-            onClick={ this.handleSubmit }
-            type="submit"
-          >
-            Entrar
-          </button>
+          <header>
+            <Header />
+          </header>
+          <section>
+            <label htmlFor="name">
+              Login:
+              <input
+                data-testid="login-name-input"
+                id="name"
+                name="name"
+                onChange={ this.handleChange }
+                placeholder="Type your name here..."
+                type="text"
+                value={ name }
+              />
+            </label>
+            <button
+              data-testid="login-submit-button"
+              disabled={ disabled }
+              name="btnName"
+              onClick={ this.handleSubmit }
+              type="submit"
+            >
+              Entrar
+            </button>
+          </section>
         </section>
       )}
       { login === true && (
@@ -83,7 +87,7 @@ render() {
           <Redirect to="/search" />
         </Route>
       )}
-    </main>
+    </div>
   );
 }
 }

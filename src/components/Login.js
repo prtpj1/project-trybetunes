@@ -60,7 +60,7 @@ render() {
               Login:
               <input
                 data-testid="login-name-input"
-                id="inpt-name"
+                id="name"
                 name="name"
                 onChange={ this.handleChange }
                 placeholder="Type your name here..."

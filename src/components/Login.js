@@ -16,9 +16,7 @@ class Login extends Component {
     };
   }
 
-  handleChange = ({ target }) => {
-    const { name, value } = target;
-
+  handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value,
     }, () => this.submitValidation());
@@ -62,7 +60,7 @@ render() {
               Login:
               <input
                 data-testid="login-name-input"
-                id="name"
+                id="inpt-name"
                 name="name"
                 onChange={ this.handleChange }
                 placeholder="Type your name here..."

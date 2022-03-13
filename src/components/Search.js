@@ -92,11 +92,14 @@ class Search extends Component {
                         src={ elemArtist.artworkUrl100 }
                         alt={ elemArtist.artistName }
                       />
-                      <p>{elemArtist.collectionName}</p>
-                      <Link
-                        to={ `/album/${elemArtist.collectionId}` }
-                        data-testid={ `link-to-album-${elemArtist.collectionId}` }
-                      />
+                      <p>
+                        <Link
+                          to={ `/album/${elemArtist.collectionId}` }
+                          data-testid={ `link-to-album-${elemArtist.collectionId}` }
+                        >
+                          {elemArtist.collectionName}
+                        </Link>
+                      </p>
                     </div>
                   ))}
                 </div>

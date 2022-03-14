@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
 
 import Header from './Header';
+import Loading from './Loading';
 import MusicCard from './MusicCard';
 
 class Album extends Component {
@@ -11,6 +12,7 @@ class Album extends Component {
     super(props);
     this.state = {
       allTracks: '',
+      loading: false,
       musicPreview: [],
     };
   }
@@ -32,36 +34,44 @@ class Album extends Component {
   render() {
     const {
       allTracks,
+      loading,
       musicPreview,
     } = this.state;
 
     return (
-      <header>
-        <Header />
-        <section>
-          {musicPreview.length > 0 && (
-            <div>
-              <h1 data-testid="artist-name">{allTracks.artistName}</h1>
-              <h3 data-testid="album-name">{allTracks.collectionName}</h3>
-              <img
-                src={ allTracks.artworkUrl100 }
-                alt={ allTracks.artistName }
-              />
-              {musicPreview.map((elemArtist) => (
-                <div key={ elemArtist.trackId }>
-                  {elemArtist.previewUrl !== undefined && (
-                    <MusicCard
-                      trackName={ elemArtist.trackName }
-                      previewUrl={ elemArtist.previewUrl }
-                      artista={ elemArtist }
-                    />
-                  )}
+      <>
+        <header>
+          <Header />
+        </header>
+        { loading ? <Loading /> : (
+          <main>
+            {musicPreview.length > 0 && (
+              <div>
+                <h1 data-testid="artist-name">{allTracks.artistName}</h1>
+                <h3 data-testid="album-name">{allTracks.collectionName}</h3>
+                <img
+                  src={ allTracks.artworkUrl100 }
+                  alt={ allTracks.artistName }
+                />
+                <div>
+                  {musicPreview.map((elemArtist) => (
+                    <div key={ elemArtist.trackId }>
+                      {elemArtist.previewUrl !== undefined && (
+                        <MusicCard
+                          trackName={ elemArtist.trackName }
+                          previewUrl={ elemArtist.previewUrl }
+                          artista={ elemArtist }
+                          musicPreview={ musicPreview }
+                          trackId={ elemArtist.trackId }
+                        />)}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          )}
-        </section>
-      </header>
+              </div>
+            )}
+          </main>
+        )}
+      </>
     );
   }
 }

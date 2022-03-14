@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+
 import Header from './Header';
+import Loading from './Loading';
 
 class Search extends Component {
   constructor(props) {
@@ -54,7 +57,7 @@ class Search extends Component {
       <>
         <header>
           <Header />
-          { loading === true ? <p>Carregando...</p> : (
+          { loading ? <Loading /> : (
             <section>
               <label htmlFor="inptSearch">
                 <input
@@ -78,34 +81,35 @@ class Search extends Component {
             </section>
           )}
         </header>
-        <main>
-          <section>
-            {searchStored.length === 0
-              ? <h1>Nenhum álbum foi encontrado</h1>
-              : (
-                <div>
-                  <p>{`Resultado de álbuns de: ${artist}`}</p>
-                  {searchStored.map((elemArtist) => (
-                    <div key={ elemArtist.collectionId }>
-                      <h3>{elemArtist.artistName}</h3>
-                      <img
-                        src={ elemArtist.artworkUrl100 }
-                        alt={ elemArtist.artistName }
-                      />
-                      <p>
-                        <Link
-                          to={ `/album/${elemArtist.collectionId}` }
-                          data-testid={ `link-to-album-${elemArtist.collectionId}` }
-                        >
-                          {elemArtist.collectionName}
-                        </Link>
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              )}
-          </section>
-        </main>
+        { loading ? <Loading /> : (
+          <main>
+            <section>
+              {searchStored.length === 0
+                ? <h1>Nenhum álbum foi encontrado</h1>
+                : (
+                  <div>
+                    <p>{`Resultado de álbuns de: ${artist}`}</p>
+                    {searchStored.map((elemArtist) => (
+                      <div key={ elemArtist.collectionId }>
+                        <h3>{elemArtist.artistName}</h3>
+                        <img
+                          src={ elemArtist.artworkUrl100 }
+                          alt={ elemArtist.artistName }
+                        />
+                        <p>
+                          <Link
+                            to={ `/album/${elemArtist.collectionId}` }
+                            data-testid={ `link-to-album-${elemArtist.collectionId}` }
+                          >
+                            {elemArtist.collectionName}
+                          </Link>
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+            </section>
+          </main>)}
       </>
     );
   }

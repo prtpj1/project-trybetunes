@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 
 import Header from './Header';
+import Loading from './Loading';
 
 class Login extends Component {
   constructor(props) {
@@ -50,7 +51,7 @@ render() {
 
   return (
     <div>
-      {loading ? <p>Carregando...</p> : (
+      {loading ? <Loading /> : (
         <section>
           <header>
             <Header />

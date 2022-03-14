@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+
 import getMusics from '../services/musicsAPI';
+
 import Header from './Header';
 import MusicCard from './MusicCard';
 
@@ -45,13 +47,13 @@ class Album extends Component {
                 src={ allTracks.artworkUrl100 }
                 alt={ allTracks.artistName }
               />
-
               {musicPreview.map((elemArtist) => (
                 <div key={ elemArtist.trackId }>
                   {elemArtist.previewUrl !== undefined && (
                     <MusicCard
                       trackName={ elemArtist.trackName }
                       previewUrl={ elemArtist.previewUrl }
+                      artista={ elemArtist }
                     />
                   )}
                 </div>

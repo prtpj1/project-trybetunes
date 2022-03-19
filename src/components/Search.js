@@ -57,29 +57,30 @@ class Search extends Component {
       <>
         <header>
           <Header />
-          { loading ? <Loading /> : (
-            <section>
-              <label htmlFor="inptSearch">
-                <input
-                  data-testid="search-artist-input"
-                  id="inptSearch"
-                  name="inptSearch"
-                  onChange={ this.handleChange }
-                  placeholder="Type artist name here..."
-                  value={ inptSearch }
-                />
-              </label>
-              <button
-                data-testid="search-artist-button"
-                disabled={ disabled }
-                name="btn-search"
-                onClick={ this.clearInput }
-                type="button"
-              >
-                Pesquisar
-              </button>
-            </section>
-          )}
+          {/* { loading ? <Loading /> : ( */}
+          <section data-testid="page-search">
+            <label htmlFor="inptSearch">
+              <input
+                data-testid="search-artist-input"
+                id="inptSearch"
+                name="inptSearch"
+                onChange={ this.handleChange }
+                placeholder="Type artist name here..."
+                value={ inptSearch }
+              />
+            </label>
+            <button
+              data-testid="search-artist-button"
+              disabled={ disabled }
+              name="btn-search"
+              onClick={ this.clearInput }
+              type="button"
+            >
+              Pesquisar
+            </button>
+          </section>
+
+          {/* )} */}
         </header>
         { loading ? <Loading /> : (
           <main>

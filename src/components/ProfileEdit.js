@@ -6,7 +6,7 @@ class ProfileEdit extends Component {
     return (
       <header>
         <Header />
-        <section>
+        <section data-testid="page-profile-edit">
           ProfileEdit
         </section>
       </header>

@@ -24,6 +24,7 @@ class Album extends Component {
   musicList = async () => {
     const { match: { params: { id } } } = this.props;
     const allMusics = await getMusics(id);
+    // console.log(this.props);
 
     this.setState({
       musicPreview: allMusics,
@@ -44,32 +45,36 @@ class Album extends Component {
           <Header />
         </header>
         { loading ? <Loading /> : (
-          <main>
-            {musicPreview.length > 0 && (
-              <div>
-                <h1 data-testid="artist-name">{allTracks.artistName}</h1>
-                <h3 data-testid="album-name">{allTracks.collectionName}</h3>
-                <img
-                  src={ allTracks.artworkUrl100 }
-                  alt={ allTracks.artistName }
-                />
+          <>
+            <section data-testid="page-album">
+              {musicPreview.length > 0 && (
                 <div>
-                  {musicPreview.map((elemArtist) => (
-                    <div key={ elemArtist.trackId }>
-                      {elemArtist.previewUrl !== undefined && (
-                        <MusicCard
-                          trackName={ elemArtist.trackName }
-                          previewUrl={ elemArtist.previewUrl }
-                          artista={ elemArtist }
-                          musicPreview={ musicPreview }
-                          trackId={ elemArtist.trackId }
-                        />)}
-                    </div>
-                  ))}
+                  <h1 data-testid="artist-name">{allTracks.artistName}</h1>
+                  <h3 data-testid="album-name">{allTracks.collectionName}</h3>
+                  <img
+                    src={ allTracks.artworkUrl100 }
+                    alt={ allTracks.artistName }
+                  />
                 </div>
-              </div>
-            )}
-          </main>
+              )}
+            </section>
+            <div>
+              {musicPreview.map((elemArtist) => (
+                <div key={ elemArtist.collectionViewUrl }>
+                  {elemArtist.previewUrl !== undefined && (
+                    <MusicCard
+                      trackName={ elemArtist.trackName }
+                      previewUrl={ elemArtist.previewUrl }
+                      artista={ elemArtist }
+                      musicPreview={ musicPreview }
+                      trackId={ elemArtist.trackId }
+                    />)}
+                </div>
+              ))}
+            </div>
+
+          </>
+
         )}
       </>
     );

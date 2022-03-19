@@ -56,7 +56,7 @@ render() {
           <header>
             <Header />
           </header>
-          <section>
+          <section data-testid="page-login">
             <label htmlFor="name">
               Login:
               <input

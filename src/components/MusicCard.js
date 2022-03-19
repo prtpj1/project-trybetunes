@@ -23,6 +23,7 @@ class MusicCard extends Component {
   addFavorite = async () => {
     const { artista } = this.props;
     const { check } = this.state;
+    console.log(typeof artista);
 
     this.setState({ loading: true });
     await addSong(artista);
@@ -44,7 +45,7 @@ class MusicCard extends Component {
   }
 
   savedFavorites = () => {
-    const { trackId } = this.props;
+    const { artista: { trackId } } = this.props;
     const { favorites } = this.state;
 
     favorites.forEach((song) => {
@@ -54,13 +55,12 @@ class MusicCard extends Component {
         });
       }
     });
+    // console.log(elemArtist.trackId);
   }
 
   render() {
     const {
       artista,
-      previewUrl,
-      trackName,
     } = this.props;
 
     const {
@@ -68,13 +68,11 @@ class MusicCard extends Component {
       loading,
     } = this.state;
 
-    const { trackId } = artista;
-
     return (
       <>
-        <span>{trackName}</span>
+        <span>{artista.trackName}</span>
         <div>
-          <audio data-testid="audio-component" src={ previewUrl } controls>
+          <audio data-testid="audio-component" src={ artista.previewUrl } controls>
             <track kind="captions" />
             O seu navegador não suporta o elemento
             <code>audio</code>
@@ -87,7 +85,7 @@ class MusicCard extends Component {
               Favorita
               <input
                 checked={ check }
-                data-testid={ `checkbox-music-${trackId}` }
+                data-testid={ `checkbox-music-${artista.trackId}` }
                 id="trackFavorite"
                 name="trackFavorite"
                 onChange={ this.addFavorite }
@@ -95,7 +93,9 @@ class MusicCard extends Component {
               />
             </label>
           )}
+          {/* {console.log(artista)} */}
         </div>
+
       </>
 
     );
@@ -103,10 +103,11 @@ class MusicCard extends Component {
 }
 
 MusicCard.propTypes = {
-  artista: PropTypes.string.isRequired,
-  trackId: PropTypes.string.isRequired,
-  previewUrl: PropTypes.string.isRequired,
-  trackName: PropTypes.string.isRequired,
+  artista: PropTypes.shape({
+    trackId: PropTypes.number.isRequired,
+    previewUrl: PropTypes.string.isRequired,
+    trackName: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default MusicCard;

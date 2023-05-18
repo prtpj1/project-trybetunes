@@ -49,7 +49,8 @@ De acordo com os requisitos do projeto designados pela Trybe o usuário poderá:
 2. Instale as dependências: <br>
 `npm install`
 3. Inicie a aplicação: <br>
-`npm start`⚠️Aguarde a aplicação abrir no seu navegador. Caso não ocorra, coloque na barra de endereços do seu navegador: **http://localhost:3000/**
+`npm start` <br>
+⚠️Aguarde a aplicação abrir no seu navegador. Caso não ocorra, coloque na barra de endereços do seu navegador: `http://localhost:3000/`
 4. Na tela inicial, coloque o seu nome ou qualquer nome que deseje e clique no botão "Entrar" <br>
 5. Digite no campo de busca o nome de algum artista ou banda, por exemplo: <br>
 `Queen` ou `Tom Jobim`

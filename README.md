@@ -55,6 +55,7 @@ De acordo com os requisitos do projeto designados pela Trybe o usuário poderá:
 5. Digite no campo de busca o nome de algum artista ou banda, por exemplo: <br>
 `Queen` ou `Tom Jobim`
 <br>
+
 **OBS:**
 </br>
 *Na época que fiz este projeto eu ainda não conhecia os Conventional Commits. Somente a partir do módulo de BackEnd do curso da Trybe que aprendi e comecei a fazer commits melhores.
